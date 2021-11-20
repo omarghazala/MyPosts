@@ -29,6 +29,7 @@ public class Post implements Serializable {
     @JoinColumn(name = "post_creator_id")
     User user;
 
+    public Post(){}
 
     public Post(String content, Status status, User user) {
         this.content = content;

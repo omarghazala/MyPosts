@@ -1,5 +1,6 @@
 package com.pharos.myposts.service;
 
+import com.pharos.myposts.dao.PostDao;
 import com.pharos.myposts.entity.Post;
 import com.pharos.myposts.entity.User;
 import com.pharos.myposts.exceptions.UserNotFoundException;
@@ -19,6 +20,9 @@ public class PostServiceImpl implements PostService{
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    PostDao postDao;
+
 
     @Override
     public boolean savePost(Post post, String username, String password) throws UserNotFoundException, WrongPasswordException {
@@ -34,7 +38,14 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<Post> searchPost(String searchString, String username, String password) throws UserNotFoundException, WrongPasswordException {
-        return null;
+    public List<Post> searchPosts(String searchText, String username, String password) throws UserNotFoundException, WrongPasswordException {
+        User user = userService.validateUserAuthority(username, password);
+        if (user != null) {
+            return postDao.searchPostsBySearchText(searchText);
+        }
+        else{
+            return null;
+        }
+
     }
 }

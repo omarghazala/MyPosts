@@ -10,6 +10,6 @@ public interface PostService {
 
     public boolean savePost(Post post, String username, String password)
             throws UserNotFoundException, WrongPasswordException;
-    public List<Post> searchPost(String searchString, String username, String password)
+    public List<Post> searchPosts(String searchText, String username, String password)
             throws UserNotFoundException, WrongPasswordException;
 }

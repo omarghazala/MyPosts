@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService {
     @Qualifier("passwordEncoder")
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public User findByName(String userName) {
-        return userRepo.findByuserName(userName);
+    public User findByUserName(String username) {
+        return userRepo.findByUserName(username);
     }
 
-    public User validateUserAuthority(String userName, String password) throws UserNotFoundException, WrongPasswordException {
-        User user = findByName(userName);
+    public User validateUserAuthority(String username, String password) throws UserNotFoundException, WrongPasswordException {
+        User user = findByUserName(username);
         if (user == null) {
             throw new UserNotFoundException();
         }

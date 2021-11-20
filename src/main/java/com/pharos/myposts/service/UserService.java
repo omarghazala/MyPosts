@@ -7,7 +7,7 @@ import com.pharos.myposts.exceptions.WrongPasswordException;
 
 public interface UserService {
 
-    public User findByName(String userName);
+    public User findByUserName(String username);
 
     public User validateUserAuthority(String userName, String password) throws UserNotFoundException, WrongPasswordException;
 }
