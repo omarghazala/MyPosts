@@ -22,7 +22,6 @@ public class User {
     @JsonIgnore
     private String userPassword;
 
-    //@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;

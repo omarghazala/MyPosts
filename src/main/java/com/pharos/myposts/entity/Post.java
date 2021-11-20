@@ -30,5 +30,9 @@ public class Post implements Serializable {
     User user;
 
 
-
+    public Post(String content, Status status, User user) {
+        this.content = content;
+        this.status = status;
+        this.user = user;
+    }
 }
