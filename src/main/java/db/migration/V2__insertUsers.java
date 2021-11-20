@@ -15,14 +15,11 @@ public class V2__insertUsers extends BaseJavaMigration {
         Statement statement = context.getConnection().createStatement();
 
         statement.execute(
-                "insert into users (user_name,user_password) values ('user1','" + B_CRYPT_PASSWORD_ENCODER.encode("111")
-                        + "')");
+                "insert into users (user_name,user_password,full_name) values ('user1','" + B_CRYPT_PASSWORD_ENCODER.encode("111") + "','user 1')");
 
         statement.execute(
-                "insert into users (user_name,user_password) values ('user2','" + B_CRYPT_PASSWORD_ENCODER.encode("222")
-                        + "')");
+                "insert into users (user_name,user_password,full_name) values ('user2','" + B_CRYPT_PASSWORD_ENCODER.encode("222") + "','user 2')");
         statement.execute(
-                "insert into users (user_name,user_password) values ('user3','" + B_CRYPT_PASSWORD_ENCODER.encode("333")
-                        + "')");
+                "insert into users (user_name,user_password,full_name) values ('user3','" + B_CRYPT_PASSWORD_ENCODER.encode("333") + "','user 3')");
     }
 }

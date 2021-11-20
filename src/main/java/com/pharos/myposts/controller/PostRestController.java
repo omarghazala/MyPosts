@@ -8,6 +8,7 @@ import com.pharos.myposts.service.PostService;
 import com.pharos.myposts.service.UserService;
 import com.pharos.myposts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +25,12 @@ public class PostRestController {
     @PostMapping("/savePost")
     public ResponseEntity<String> savePost(@RequestBody Post post, @RequestParam("username") String username, @RequestParam("password") String password)
             throws UserNotFoundException, WrongPasswordException {
-        if(postService.savePost(post,username,password)){
-            return ResponseEntity.ok("Post Saved");
-        }
-        else{
-            return ResponseEntity.ok("Post not saved, bad user");
-        }
+            try{
+                return postService.savePost(post,username,password);
+            }
+            catch(Exception e){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            }
 
     }
 

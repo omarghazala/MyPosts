@@ -22,6 +22,8 @@ public class User {
     @JsonIgnore
     private String userPassword;
 
+    private String fullName;
+
     @Column(name = "created_at")
     @CreationTimestamp
     private Date createdAt;
